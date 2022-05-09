@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import toast from "react-hot-toast";
 
 const styles = {
   form: {
@@ -34,10 +35,21 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+    if (name === "" || email === "" || password === "") {
+      toast.error("Please fill out all required fields");
+      return;
+    }
+    dispatch(authOperations.register({ name, email, password }))
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`Sorry, something went wrong`);
+      });
+    setName("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -47,7 +59,7 @@ export default function RegisterView() {
       <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
         <label style={styles.label}>
           Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <input type="text" name="name" placeholder='Ivanov Ivan' value={name} onChange={handleChange} />
         </label>
 
         <label style={styles.label}>
@@ -57,6 +69,7 @@ export default function RegisterView() {
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder='name@email.com'
           />
         </label>
 
@@ -67,6 +80,7 @@ export default function RegisterView() {
             name="password"
             value={password}
             onChange={handleChange}
+            placeholder='at least 8 symbols'
           />
         </label>
 

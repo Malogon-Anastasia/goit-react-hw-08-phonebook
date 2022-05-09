@@ -6,7 +6,8 @@ import PublicRoute from './components/PublicRoute';
 import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Audio } from "react-loader-spinner";
-import s from './App.module.css';
+// import s from './App.module.css';
+import { Toaster } from "react-hot-toast";
 
 import { authOperations, authSelectors } from './redux/auth';
 
@@ -36,6 +37,7 @@ export default function App() {
 
   return (
     <Container>
+       <Toaster />
       {isFetchingCurrentUser ? (
         <Audio
           heigth="300"
