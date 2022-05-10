@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+
 
 const styles = {
   container: {
@@ -22,9 +25,9 @@ export default function UserMenu() {
   return (
     <div style={styles.container}>
       <span style={styles.name}>Welcome, {name}</span>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+      <Button variant="contained" type="button" onClick={() => dispatch(authOperations.logOut())}>
         Log out
-      </button>
+      </Button>
     </div>
   );
 }

@@ -15,7 +15,7 @@ const styles = {
     fontWeight: 700,
     borderBottom: '1px solid #2A363B',
     fontSize: '18px',
-    // backgroundColor: 'orange',
+   
   },
 };
 

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
 import toast from "react-hot-toast";
+import * as React from 'react';
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
 
 const styles = {
   form: {
@@ -59,32 +62,40 @@ export default function RegisterView() {
       <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
         <label style={styles.label}>
           Name
-          <input type="text" name="name" placeholder='Ivanov Ivan' value={name} onChange={handleChange} />
+          <Input variant="contained" 
+          type="text" 
+          name="name" 
+          placeholder='Ivanov Ivan' 
+          autoComplete='off' 
+          value={name} 
+          onChange={handleChange} />
         </label>
 
         <label style={styles.label}>
           Email
-          <input
+          <Input variant="contained"
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
             placeholder='name@email.com'
+            autoComplete='off'
           />
         </label>
 
         <label style={styles.label}>
           Password
-          <input
+          <Input variant="contained"
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
             placeholder='at least 8 symbols'
+            autoComplete='off'
           />
         </label>
 
-        <button type="submit">Sign up</button>
+        <Button variant="contained" type="submit">Sign up</Button>
       </form>
     </div>
   );

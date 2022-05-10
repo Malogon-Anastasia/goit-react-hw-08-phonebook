@@ -4,6 +4,9 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 import contactsOperations from 'redux/contacts/contacts-operations';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
+import * as React from 'react';
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -53,7 +56,7 @@ export default function ContactForm() {
         <div className={s.formWrap}>
           <label className={s.label}>
             Name{' '}
-            <input
+            <Input variant="contained"
               className={s.input}
               type="text"
               value={name}
@@ -66,7 +69,7 @@ export default function ContactForm() {
           </label>
           <label className={s.label}>
             Number{' '}
-            <input
+            <Input variant="contained"
               className={s.input}
               type="tel"
               value={number}
@@ -78,9 +81,9 @@ export default function ContactForm() {
             />
           </label>
 
-          <button className={s.button} type="submit">
+          <Button variant="contained" type="submit">
             Add contact
-          </button>
+          </Button>
         </div>
       </form>
   )
